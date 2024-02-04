@@ -52,27 +52,9 @@
   </footer>
 
   <!-- JAVASCRIPT -->
-  <script src="/assets?js=login"></script>
-  {% block scripts %}{% endblock %}
-
-  <script type="module">
-    import Typebot from '/assets?js=typebot'
-
-    Typebot.initBubble({
-      typebot: "spike-s9nvhm3",
-      apiHost: "http://localhost:3001",
-      previewMessage: {
-        message: "Posso ajudar?",
-        autoShowDelay: 5000,
-        avatarUrl:
-          "http://localhost:9000/typebot/public/typebots/clk2v5s3r000dv18ris9nvhm3/hostAvatar?v=1689379134888",
-      },
-      theme: {
-        button: { backgroundColor: "#ff6600" },
-        chatWindow: { backgroundColor: "#ffffff" },
-      },
-    });
-  </script>
+    <script src="/assets?js=login"></script>
+    {% block scripts %}{% endblock %}
+    <script src="/assets?js=utils"></script>
 
 </body>
 </html>

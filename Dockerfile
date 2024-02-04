@@ -15,6 +15,10 @@ RUN pecl install xdebug-3.2.1 \
 # Install composer
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
+COPY --chown=www-data:www-data docker/mysql/entrypoint.sh /etc/profile.d/entrypoint.sh
+RUN chmod +x /etc/profile.d/entrypoint.sh
+RUN /etc/profile.d/entrypoint.sh
+
 RUN usermod -u 1000 www-data
 
 COPY --chown=www-data:www-data . /usr/src/app

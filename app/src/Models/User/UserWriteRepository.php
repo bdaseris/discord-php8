@@ -26,10 +26,12 @@ class UserWriteRepository
             INSERT INTO users (
                 name,
                 email,
+                password,
                 user_type
             ) VALUES (
                 :name,
                 :email,
+                :password,
                 :user_type
             )
         ";
@@ -38,6 +40,7 @@ class UserWriteRepository
 
         $stmt->bindValue('name', $model->name ?? "John Doe");
         $stmt->bindValue('email', $model->email ?? "john@doe.com");
+        $stmt->bindValue('password', $model->password ?? "123456");
         $stmt->bindValue('user_type', $model->userType ?? "user");
 
         $stmt->execute();

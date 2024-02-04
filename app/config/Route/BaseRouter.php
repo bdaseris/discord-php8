@@ -41,8 +41,8 @@ abstract class BaseRouter
 
             if (method_exists($controller, $methodName)) {
                 $controller->$methodName(
-                    Request::createFromGlobals(),
-                    new AppResponse()
+                    request: Request::createFromGlobals(),
+                    response: new AppResponse()
                 );
             }
         }

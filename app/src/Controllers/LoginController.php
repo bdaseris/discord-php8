@@ -27,7 +27,7 @@ class LoginController extends AbstractController
 
         if (empty($loginData['email']) || empty($loginData['password'])) {
             return $response->json([
-                "message" => $erroMessage
+                "error" => $erroMessage
             ]);
         }
 
@@ -37,7 +37,7 @@ class LoginController extends AbstractController
         if (count($userFound)) {
             if ($userFound['password'] !== $loginData['password']) {
                 return $response->json([
-                    "message" => $erroMessage
+                    "error" => $erroMessage
                 ]);
             }
             $_SESSION['user'] = serialize($userFound);

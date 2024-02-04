@@ -3,7 +3,7 @@ window.OBJLogin = {
   async sendForm(formLogin) {
     
     if (formLogin && formLogin.checkValidity()) {
-      const ObjForm = this.traitElement(formLogin)
+      const ObjForm = Utils.traitElement(formLogin)
       
       if (Object.values(ObjForm).length) {
         const response = await fetch('/login', { 
@@ -12,10 +12,10 @@ window.OBJLogin = {
         })
         
         if (response.ok) {
-          const { message } = await response.json()
+          const { error } = await response.json()
           
-          if (message) { 
-            alert(message)            
+          if (error) {
+            alert(error)
             return formLogin.reset()
           }
  
@@ -29,16 +29,4 @@ window.OBJLogin = {
     fetch('/logout')
       .then(() => location.href = '/')    
   },
-  
-  traitElement(elem) {
-    let result = {}
-    
-    for (let i= 0; i < elem.length; i++) {
-      if (elem[i].value) {
-        result[elem[i].name] = elem[i].value
-      }
-    }
-    
-    return result
-  }
 }
